@@ -1,0 +1,113 @@
+===WP===
+1. Login
+2. Possible to change language
+3. Blocks - click and going to selected block on the page
+    3.1. About
+    3.2. Features
+    3.3. Security
+    3.4. Prices
+4. More about security
+5. Buy licence - redirect to login
+6. Headers
+    6.1. Homepage
+    6.2. FAQ/Support
+    6.3. Buy licence
+    6.4. Blog
+    6.5. Terms of use
+    6.6. Privacy policy
+    6.7. Legal notice
+7. Sign up - it's free!
+
+===Registration===
+1. endpoints /account/registration
+2. Possible to change language
+3. Description about registration
+4. Fields
+    4.1. Email
+        4.1.1. Valid value
+        4.1.2. Invalid value — message about email standard
+    4.2. Password
+        4.2.1. hidden or not
+        4.2.2. Password is too short. Min. 8 characters
+        4.2.3. Password strength: Bad — 11111111
+        4.2.4. Password strength: Weak — 12345678
+        4.2.5. Password strength: Good — k!1ndasjnA
+        4.2.6. Password strength: Strong — k!1ndasjnA@
+    4.3. Password confirmation
+        4.3.1. hidden or not
+        4.3.2. password = password confirmation
+        4.3.3. Password confirmation doesn’t match — Registration not successful
+    4.4. Password init
+5. Checkboxes
+    5. agree with policy
+    5. agree about user data
+6. Button
+    6.1. OK
+7. Text after success registration:
+    "User registered
+    You will now receive an email with a confirmation link. Please follow the instructions in the email. Please also check your Spam folder!'
+
+===Login===
+1. Valid user and password data
+2. Invalid user
+3. Invalid password
+4. Hidden button
+5. Register — redirect to registration page
+6. Send password reminder — redirect to /account/password_reminder
+
+===User's page===
+1. Current date Welcome to monkkee!
+2. Settings
+    2.1. Language selection
+        2.1.1. it's possible to change language
+        2.1.1. Your language has been changed successfully
+    2.2. Colour scheme
+        2.2.1. it's possible to change colour scheme
+        2.2.2. Automatic
+        2.2.3. Light
+        2.2.4. Dark
+        2.2.5. Your colour scheme has been changed successfully
+    2.3. Email
+    2.4. Password
+        2.4.1. Old password
+            2.4.1.1. Valid
+            2.4.1.2. Not Valid
+            2.4.1.3. Hidden
+        2.4.2.
+            2.4.2.1. hidden or not
+            2.4.2.2. Password is too short. Min. 8 characters
+            2.4.2.3. Password strength: Bad — 11111111
+            2.4.2.4. Password strength: Weak — 12345678
+            2.4.2.5. Password strength: Good — k!1ndasjnA
+            2.4.2.6. Password strength: Strong — k!1ndasjnA@
+        2.4.3. Password confirmation
+            2.4.3.1. hidden or not
+            2.4.3.2. password = password confirmation
+            2.4.3.3. Password confirmation doesn’t match — Registration not successful
+        2.4.4. Password hint
+    2.5. Login alias
+    2.6. Inactivity timeout
+        2.6.1. Deactivated
+        2.6.2. 5 min
+        2.6.3. 10 min
+        2.6.4. 20 min
+        2.6.5. 30 min
+    2.7. Editor
+    2.8. Export
+    2.9. License
+    2.10. Support
+    2.11. Delete account
+3. Create an entry
+    3.1. Create (back to homepage)
+    3.2. Filling text
+    3.3. Bold
+    3.4. Delete
+    3.5. Print
+    3.6. Date
+        3.6.1. Current date
+        3.6.2. Change
+4. Search
+    4.1. Valid values
+    4.2. InValid values
+5. Calendar
+6. Log Out
