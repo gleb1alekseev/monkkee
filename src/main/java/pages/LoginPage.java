@@ -8,21 +8,50 @@ import elements.Input;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
+/**
+ * The type Login page.
+ */
 public class LoginPage extends BasePage{
 
+    /**
+     * The constant LOGIN.
+     */
     public static final SelenideElement LOGIN = $x("//*[@type='submit']");
+    /**
+     * The constant MANDATORY_FIELD_MESSAGE.
+     */
     public static final SelenideElement MANDATORY_FIELD_MESSAGE = $x("//*[contains(text(), 'Mandatory field')]");
-    public static final String LOGIN_FAILED_MESSAGE = "//*[contains(text(), 'Login failed')]";
+    /**
+     * The constant LOGIN_FAILED_MESSAGE.
+     */
+    public static final SelenideElement LOGIN_FAILED_MESSAGE = $x("//*[contains(text(), 'Login failed')]");
+    /**
+     * The constant LOGO_BUTTON.
+     */
     public static final SelenideElement LOGO_BUTTON = $x("//*[@alt='Logo']");
 
+    /**
+     * Instantiates a new Login page.
+     */
     public LoginPage() {
     }
 
+    /**
+     * Open login page login page.
+     *
+     * @param url the url
+     * @return the login page
+     */
     public LoginPage openLoginPage(String url) {
         open(url);
         return this;
     }
 
+    /**
+     * Is opened login page.
+     *
+     * @return the login page
+     */
     public LoginPage isOpened() {
         LOGIN.shouldBe(Condition.visible);
         return this;
@@ -35,6 +64,13 @@ public class LoginPage extends BasePage{
         return this;
     }
 
+    /**
+     * Login to main page main page.
+     *
+     * @param login    the login
+     * @param password the password
+     * @return the main page
+     */
     public MainPage loginToMainPage(String login, String password) {
         fillLoginAndPasswordToLogin(login, password);
         return new MainPage();
@@ -46,6 +82,12 @@ public class LoginPage extends BasePage{
         return this;
     }
 
+    /**
+     * Login with only login main page.
+     *
+     * @param login the login
+     * @return the main page
+     */
     public MainPage loginWithOnlyLogin(String login) {
         fillOnlyUserToLogin(login);
         return new MainPage();
@@ -57,15 +99,31 @@ public class LoginPage extends BasePage{
         return this;
     }
 
+    /**
+     * Login with only password main page.
+     *
+     * @param password the password
+     * @return the main page
+     */
     public MainPage loginWithOnlyPassword(String password) {
         fillOnlyPasswordToLogin(password);
         return new MainPage();
     }
 
+    /**
+     * Login failed text string.
+     *
+     * @return the string
+     */
     public static String loginFailedText() {
-        return $x(String.format(LOGIN_FAILED_MESSAGE)).getText();
+        return LOGIN_FAILED_MESSAGE.getText();
     }
 
+    /**
+     * Click logo login page.
+     *
+     * @return the login page
+     */
     public LoginPage clickLogo(){
         new Button().click(LOGO_BUTTON);
         return this;

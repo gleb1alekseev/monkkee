@@ -8,7 +8,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.BasePage;
 import steps.LoginSteps;
+import steps.MainSteps;
 import steps.RegistrationSteps;
+import steps.SettingsSteps;
 import utils.PropertyReader;
 
 import java.util.HashMap;
@@ -20,6 +22,8 @@ public class BaseTest extends BasePage {
 
     protected LoginSteps loginSteps;
     protected RegistrationSteps registrationSteps;
+    protected MainSteps mainSteps;
+    protected SettingsSteps settingsSteps;
 
 //    login
     public static String LOGIN_USER = PropertyReader.getProperty("login");
@@ -32,10 +36,18 @@ public class BaseTest extends BasePage {
     public static String REGISTRATION_PASSWORD = PropertyReader.getProperty("registrationPassword");
     public static String REGISTRATION_PASSWORD_CONFIRMATION = PropertyReader.getProperty("registrationPasswordConfirmation");
     public static String REGISTRATION_PASSWORD_HINT = PropertyReader.getProperty("registrationPasswordHint");
+    public static String REGISTRATION_SHORT_PASSWORD = PropertyReader.getProperty("registrationShortPassword");
+    public static String REGISTRATION_BAD_RED_PASSWORD = PropertyReader.getProperty("registrationBadRedPassword");
+    public static String REGISTRATION_STRONG_GREEN_PASSWORD = PropertyReader.getProperty("registrationStrongGreenPassword");
+    public static String REGISTRATION_PASSWORD_CONFIRMATION_NOT_EQUALS_PASSWORD = PropertyReader.getProperty("registrationPasswordConfirmationNotEqualPassword");
+
+    public static String MAIN_ENTRY_DESCRIPTION = PropertyReader.getProperty("entryDescription");
 
     public void initPages() {
         loginSteps = new LoginSteps();
-        registrationSteps = new RegistrationSteps();;
+        registrationSteps = new RegistrationSteps();
+        mainSteps = new MainSteps();
+        settingsSteps = new SettingsSteps();
     }
 
     @BeforeMethod

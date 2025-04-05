@@ -10,6 +10,7 @@ public class Input {
 
     public String loginLocator = "//*[@name='%s']";
     public String registrationLocator = "//*[@id='%s']";
+    public String entryDescriptionLocator = "//*[@id='%s']";
 
     public Input(String label) {
         this.label = label;
@@ -22,6 +23,11 @@ public class Input {
 
     public Input writeRegistrationFields(String text) {
         $x(String.format(registrationLocator, label)).shouldBe(Condition.visible).setValue(text);
+        return this;
+    }
+
+    public Input writeEntryDescriptionFields(String text) {
+        $x(String.format(entryDescriptionLocator, label)).shouldBe(Condition.visible).setValue(text);
         return this;
     }
 }

@@ -17,4 +17,18 @@ public class RegistrationSteps extends BaseSteps{
                 .openRegistrationPage(url)
                 .registrationNewAccount(email, password, passwordConfirmation, passwordHint);
     }
+
+    @Step("Registration user filling password field to check validation message")
+    public void registrationPasswordValidationStep(String url, String password){
+        registrationPage
+                .openRegistrationPage(url)
+                .registrationInputPasswordField(password);
+    }
+
+    @Step("Registration user filling password and password_confirmation fields to check validation message")
+    public void registrationPasswordConfirmationValidationStep(String url, String password, String passwordConfirmation){
+        registrationPage
+                .openRegistrationPage(url)
+                .registrationInputPasswordAndPasswordConfirmationFields(password, passwordConfirmation);
+    }
 }
