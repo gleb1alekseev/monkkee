@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: params.BRANCH, url: 'https://github.com/gleb1alekseev/monkkee.git'
+                git branch: 'tests', url: 'https://github.com/gleb1alekseev/monkkee.git'
 
                 // Run Maven on a Unix agent.
 //                 sh "mvn -Dtest=LoginTest test"
