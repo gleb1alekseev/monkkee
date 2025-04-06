@@ -7,14 +7,14 @@ pipeline {
     }
 
     parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'tests', name: 'BRANCH', type: 'PT_BRANCH'
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
     stages {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'tests', url: 'https://github.com/gleb1alekseev/monkkee.git'
+                git branch: 'master', url: 'https://github.com/gleb1alekseev/monkkee.git'
 
                 // Run Maven on a Unix agent.
 //                 sh "mvn -Dtest=LoginTest test"
