@@ -8,26 +8,11 @@ import elements.Input;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
-/**
- * The type Login page.
- */
 public class LoginPage extends BasePage{
 
-    /**
-     * The constant LOGIN.
-     */
     public static final SelenideElement LOGIN = $x("//*[@type='submit']");
-    /**
-     * The constant MANDATORY_FIELD_MESSAGE.
-     */
     public static final SelenideElement MANDATORY_FIELD_MESSAGE = $x("//*[contains(text(), 'Mandatory field')]");
-    /**
-     * The constant LOGIN_FAILED_MESSAGE.
-     */
     public static final SelenideElement LOGIN_FAILED_MESSAGE = $x("//*[contains(text(), 'Login failed')]");
-    /**
-     * The constant LOGO_BUTTON.
-     */
     public static final SelenideElement LOGO_BUTTON = $x("//*[@alt='Logo']");
 
     /**

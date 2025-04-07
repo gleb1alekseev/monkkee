@@ -42,6 +42,7 @@ public class BaseTest extends BasePage {
     public static String REGISTRATION_PASSWORD_CONFIRMATION_NOT_EQUALS_PASSWORD = PropertyReader.getProperty("registrationPasswordConfirmationNotEqualPassword");
 
     public static String MAIN_ENTRY_DESCRIPTION = PropertyReader.getProperty("entryDescription");
+    public static String MAIN_ENTRY_URL = PropertyReader.getProperty("entryUrl");
 
     public void initPages() {
         loginSteps = new LoginSteps();

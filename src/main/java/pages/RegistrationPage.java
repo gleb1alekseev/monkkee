@@ -8,48 +8,17 @@ import elements.Input;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
-/**
- * The type Registration page.
- */
 public class RegistrationPage extends BasePage{
 
-    /**
-     * The constant OK_BUTTON.
-     */
     public static final SelenideElement OK_BUTTON = $x("//button[@type='submit']");
-    /**
-     * The constant CHECKBOX_TERMS_OF_USE.
-     */
     public static final SelenideElement CHECKBOX_TERMS_OF_USE = $x("//input[@id='registration_terms_of_use']");
-    /**
-     * The constant CHECKBOX_LOST_PASSWORD_WARNING_REGISTERED.
-     */
     public static final SelenideElement CHECKBOX_LOST_PASSWORD_WARNING_REGISTERED = $x("//input[@id='registration_lost_password_warning_registered']");
-    /**
-     * The constant USER_REGISTERED_XPATH.
-     */
     public static final SelenideElement USER_REGISTERED_XPATH = $x("//*[contains(text(), 'User registered')]");
-    /**
-     * The constant VALIDATION_MESSAGE_SHORT_PASSWORD.
-     */
     public static final SelenideElement VALIDATION_MESSAGE_SHORT_PASSWORD = $x("//*[@id='registration_password-strength-indicator' and contains(text(), 'Password is too short')]");
-    /**
-     * The constant VALIDATION_MESSAGE_BAD_PASSWORD.
-     */
     public static final SelenideElement VALIDATION_MESSAGE_BAD_PASSWORD = $x("//*[contains(text(), 'Password strength: Bad')]");
-    /**
-     * The constant VALIDATION_MESSAGE_STRONG_PASSWORD.
-     */
     public static final SelenideElement VALIDATION_MESSAGE_STRONG_PASSWORD = $x("//*[contains(text(), 'Password strength: Strong')]");
-    /**
-     * The constant VALIDATION_MESSAGE_PASSWORD_BACKGROUND.
-     */
     public static final SelenideElement VALIDATION_MESSAGE_PASSWORD_BACKGROUND = $x("//*[@id = 'registration_password-strength-indicator']");
-    /**
-     * The constant VALIDATION_MESSAGE_PASSWORD_CONFIRMATION.
-     */
     public static final SelenideElement VALIDATION_MESSAGE_PASSWORD_CONFIRMATION = $x("//*[contains(text(), 'Password confirmation doesn’t match')]");
-
 
     /**
      * Instantiates a new Registration page.

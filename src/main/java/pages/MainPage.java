@@ -8,40 +8,16 @@ import elements.Input;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
-/**
- * The type Main page.
- */
 public class MainPage extends BasePage{
 
-    /**
-     * The constant CREATE_NEW_ENTRY.
-     */
     public static final SelenideElement CREATE_NEW_ENTRY = $x("//*[@title='Create an entry']");
-    /**
-     * The constant LOGOUT.
-     */
     public static final SelenideElement LOGOUT = $x("//*[contains(text(), 'Logout')]");
-    /**
-     * The constant ENTRY_BACK_TO_OVERVIEW.
-     */
     public static final SelenideElement ENTRY_BACK_TO_OVERVIEW = $x("//*[@title='Back to overview']");
-    /**
-     * The constant ENTRY_CREATED_WITH_DESCRIPTION.
-     */
     public static final SelenideElement ENTRY_CREATED_WITH_DESCRIPTION = $x("//*[text()='MainEntryDescriptionTest']");
-    /**
-     * The constant CHECKBOX_CREATED_ENTITY.
-     */
     public static final SelenideElement CHECKBOX_CREATED_ENTITY = $x("/html/body/div[1]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div[1]/input");
-    /**
-     * The constant DELETE_CREATED_ENTRY.
-     */
     public static final SelenideElement DELETE_CREATED_ENTRY = $x("//*[@title='Delete selected entries']");
-    /**
-     * The constant SEARCH_CREATED_ENTRY.
-     */
     public static final SelenideElement SEARCH_CREATED_ENTRY = $x("//*[@title='Search']");
-
+    public static final SelenideElement ITALIC = $x("//*[@class='cke_button_icon cke_button__italic_icon']");
 
     /**
      * Is opened main page.
@@ -88,6 +64,7 @@ public class MainPage extends BasePage{
      */
     public MainPage createEntryWithDescription(String description){
         new Button().click(CREATE_NEW_ENTRY);
+        new Button().click(ITALIC);
         new Input("editable").writeEntryDescriptionFields(description);
         new Button().click(ENTRY_BACK_TO_OVERVIEW);
         return this;
