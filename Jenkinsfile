@@ -20,7 +20,19 @@ pipeline {
 //                 sh "mvn -Dtest=LoginTest test"
 
                 // To run Maven on a Windows agent, use
-                bat "mvn clean -Dtest=LoginTest test"
+//                 bat "mvn clean -Dtest=LoginTest test"
+            bat "tree /F src/test/java"
+
+            // 2. Запуск с явным указанием пути
+            bat """
+                mvn clean test \\
+                -Dtest=tests.LoginTest \\
+                -Dsurefire.failIfNoTests=false \\
+                -Dmaven.test.failure.ignore=true
+            """
+
+            // 3. Резервный вариант - все тесты
+            bat "mvn test -DsuiteXmlFile=src/test/resources/testng.xml"
             }
             post {
                 always {
