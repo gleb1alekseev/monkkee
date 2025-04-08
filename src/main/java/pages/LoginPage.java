@@ -4,10 +4,12 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Input;
+import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
+@Log4j2
 public class LoginPage extends BasePage{
 
     public static final SelenideElement LOGIN = $x("//*[@type='submit']");
@@ -38,6 +40,7 @@ public class LoginPage extends BasePage{
      * @return the login page
      */
     public LoginPage isOpened() {
+        log.info("Page is opened");
         LOGIN.shouldBe(Condition.visible);
         return this;
     }
@@ -46,6 +49,7 @@ public class LoginPage extends BasePage{
         new Input("login").writeLoginFields(login);
         new Input("password").writeLoginFields(password);
         new Button().click(LOGIN);
+        log.info("login with filling login and password");
         return this;
     }
 
@@ -58,12 +62,14 @@ public class LoginPage extends BasePage{
      */
     public MainPage loginToMainPage(String login, String password) {
         fillLoginAndPasswordToLogin(login, password);
+        log.info("login to main page");
         return new MainPage();
     }
 
     private LoginPage fillOnlyUserToLogin(String login) {
         new Input("login").writeLoginFields(login);
         new Button().click(LOGIN);
+        log.info("Login without password");
         return this;
     }
 
@@ -81,6 +87,7 @@ public class LoginPage extends BasePage{
     private LoginPage fillOnlyPasswordToLogin(String password) {
         new Input("password").writeLoginFields(password);
         new Button().click(LOGIN);
+        log.info("Login without login field");
         return this;
     }
 

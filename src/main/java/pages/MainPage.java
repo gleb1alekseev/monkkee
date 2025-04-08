@@ -4,10 +4,12 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Input;
+import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
+@Log4j2
 public class MainPage extends BasePage{
 
     public static final SelenideElement CREATE_NEW_ENTRY = $x("//*[@title='Create an entry']");
@@ -53,6 +55,7 @@ public class MainPage extends BasePage{
      */
     public MainPage logout(){
         new Button().click(LOGOUT);
+        log.info("Logout by click logout button");
         return this;
     }
 
@@ -67,6 +70,7 @@ public class MainPage extends BasePage{
         new Button().click(ITALIC);
         new Input("editable").writeEntryDescriptionFields(description);
         new Button().click(ENTRY_BACK_TO_OVERVIEW);
+        log.info("Create entry with description");
         return this;
     }
 
@@ -82,6 +86,7 @@ public class MainPage extends BasePage{
         new Button().click(ENTRY_BACK_TO_OVERVIEW);
         new Button().click(CHECKBOX_CREATED_ENTITY);
         new Button().click(DELETE_CREATED_ENTRY);
+        log.info("Create entry with description and delete it");
         return this;
     }
 
@@ -97,6 +102,7 @@ public class MainPage extends BasePage{
         new Button().click(ENTRY_BACK_TO_OVERVIEW);
         new Input("appendedInputButton").writeEntryDescriptionFields(description);
         new Button().click(SEARCH_CREATED_ENTRY);
+        log.info("Create entry with description and search it");
         return this;
     }
 }

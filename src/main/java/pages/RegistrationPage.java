@@ -4,10 +4,12 @@ import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Checkbox;
 import elements.Input;
+import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
+@Log4j2
 public class RegistrationPage extends BasePage{
 
     public static final SelenideElement OK_BUTTON = $x("//button[@type='submit']");
@@ -54,6 +56,7 @@ public class RegistrationPage extends BasePage{
         new Checkbox().selectCheckbox(CHECKBOX_TERMS_OF_USE);
         new Checkbox().selectCheckbox(CHECKBOX_LOST_PASSWORD_WARNING_REGISTERED);
         new Button().click(OK_BUTTON);
+        log.info("User is registered");
         return this;
     }
 
@@ -74,6 +77,7 @@ public class RegistrationPage extends BasePage{
      */
     public RegistrationPage registrationInputPasswordField(String password) {
         new Input("registration_password").writeRegistrationFields(password);
+        log.info("Password field is filling");
         return this;
     }
 
@@ -87,6 +91,7 @@ public class RegistrationPage extends BasePage{
     public RegistrationPage registrationInputPasswordAndPasswordConfirmationFields(String password, String passwordConfirmation) {
         new Input("registration_password").writeRegistrationFields(password);
         new Input("registration_password_confirmation").writeRegistrationFields(passwordConfirmation);
+        log.info("Password and password confirmation fields are filling");
         new Button().click(OK_BUTTON);
         return this;
     }

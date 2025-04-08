@@ -3,10 +3,12 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Dropdown;
+import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
+@Log4j2
 public class SettingsPage extends BasePage{
 
     public static final SelenideElement SETTINGS = $x("//*[contains(text(), 'Settings')]");
@@ -43,6 +45,7 @@ public class SettingsPage extends BasePage{
         new Button().click(COLOUR_SCHEME_BLOCK);
         new Dropdown("selectLocale").selectByVisibleText("Dark");
         new Button().click(OK_BUTTON);
+        log.info("Colour scheme is Dark now");
         return this;
     }
 
@@ -67,6 +70,7 @@ public class SettingsPage extends BasePage{
         new Button().click(OK_BUTTON);
         new Dropdown("selectLocale").selectByVisibleText("English");
         new Button().click(OK_BUTTON);
+        log.info("language is english now");
         return this;
     }
 
