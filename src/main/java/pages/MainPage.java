@@ -1,8 +1,8 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
+import elements.Checkbox;
 import elements.Input;
 import lombok.extern.log4j.Log4j2;
 
@@ -16,19 +16,15 @@ public class MainPage extends BasePage{
     public static final SelenideElement LOGOUT = $x("//*[contains(text(), 'Logout')]");
     public static final SelenideElement ENTRY_BACK_TO_OVERVIEW = $x("//*[@title='Back to overview']");
     public static final SelenideElement ENTRY_CREATED_WITH_DESCRIPTION = $x("//*[text()='MainEntryDescriptionTest']");
-    public static final SelenideElement CHECKBOX_CREATED_ENTITY = $x("/html/body/div[1]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div[1]/input");
+    public static final SelenideElement ENTRY_DESCRIPTION_EDIT = $x("//div[contains(@class, 'entries__entry-container')]");
+    public static final SelenideElement CHECKBOX_CREATED_ENTITY = $x("//*[contains(text(), '%s')]/preceding::input[@type='checkbox'][2]");
     public static final SelenideElement DELETE_CREATED_ENTRY = $x("//*[@title='Delete selected entries']");
     public static final SelenideElement SEARCH_CREATED_ENTRY = $x("//*[@title='Search']");
-    public static final SelenideElement ITALIC = $x("//*[@class='cke_button_icon cke_button__italic_icon']");
 
     /**
-     * Is opened main page.
-     *
-     * @return the main page
+     * Instantiates a new Main page.
      */
-    public MainPage isOpened() {
-        CREATE_NEW_ENTRY.shouldBe(Condition.visible);
-        return this;
+    public MainPage() {
     }
 
     /**
@@ -40,12 +36,6 @@ public class MainPage extends BasePage{
     public MainPage openLoginPage(String url) {
         open(url);
         return this;
-    }
-
-    /**
-     * Instantiates a new Main page.
-     */
-    public MainPage() {
     }
 
     /**
@@ -67,8 +57,10 @@ public class MainPage extends BasePage{
      */
     public MainPage createEntryWithDescription(String description){
         new Button().click(CREATE_NEW_ENTRY);
-        new Button().click(ITALIC);
-        new Input("editable").writeEntryDescriptionFields(description);
+        new Input("editable").writeFieldsById(description);
+        new Button().click(ENTRY_BACK_TO_OVERVIEW);
+        new Button().click(ENTRY_DESCRIPTION_EDIT);
+        new Input("editable").writeFieldsById(description);
         new Button().click(ENTRY_BACK_TO_OVERVIEW);
         log.info("Create entry with description");
         return this;
@@ -82,9 +74,9 @@ public class MainPage extends BasePage{
      */
     public MainPage createAndDeleteEntryWithDescription(String description){
         new Button().click(CREATE_NEW_ENTRY);
-        new Input("editable").writeEntryDescriptionFields(description);
+        new Input("editable").writeFieldsById(description);
         new Button().click(ENTRY_BACK_TO_OVERVIEW);
-        new Button().click(CHECKBOX_CREATED_ENTITY);
+        new Checkbox("No content").setCheckboxValueEntry(true);
         new Button().click(DELETE_CREATED_ENTRY);
         log.info("Create entry with description and delete it");
         return this;
@@ -97,10 +89,8 @@ public class MainPage extends BasePage{
      * @return the main page
      */
     public MainPage createAndSearchEntryWithDescription(String description){
-        new Button().click(CREATE_NEW_ENTRY);
-        new Input("editable").writeEntryDescriptionFields(description);
-        new Button().click(ENTRY_BACK_TO_OVERVIEW);
-        new Input("appendedInputButton").writeEntryDescriptionFields(description);
+        createEntryWithDescription(description);
+        new Input("appendedInputButton").writeFieldsById(description);
         new Button().click(SEARCH_CREATED_ENTRY);
         log.info("Create entry with description and search it");
         return this;

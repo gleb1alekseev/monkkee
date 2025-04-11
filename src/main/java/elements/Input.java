@@ -8,26 +8,20 @@ public class Input {
 
     String label;
 
-    public String loginLocator = "//*[@name='%s']";
-    public String registrationLocator = "//*[@id='%s']";
-    public String entryDescriptionLocator = "//*[@id='%s']";
+    public String byNameLocator = "//*[@name='%s']";
+    public String byIdLocator = "//*[@id='%s']";
 
     public Input(String label) {
         this.label = label;
     }
 
-    public Input writeLoginFields(String text) {
-        $x(String.format(loginLocator, label)).shouldBe(Condition.visible).setValue(text);
+    public Input writeFieldsByName(String text) {
+        $x(String.format(byNameLocator, label)).shouldBe(Condition.visible).setValue(text);
         return this;
     }
 
-    public Input writeRegistrationFields(String text) {
-        $x(String.format(registrationLocator, label)).shouldBe(Condition.visible).setValue(text);
-        return this;
-    }
-
-    public Input writeEntryDescriptionFields(String text) {
-        $x(String.format(entryDescriptionLocator, label)).shouldBe(Condition.visible).setValue(text);
+    public Input writeFieldsById(String text) {
+        $x(String.format(byIdLocator, label)).shouldBe(Condition.visible).setValue(text);
         return this;
     }
 }

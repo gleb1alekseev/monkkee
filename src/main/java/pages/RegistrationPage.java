@@ -10,22 +10,19 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
-public class RegistrationPage extends BasePage{
+public class RegistrationPage extends BasePage {
 
     public static final SelenideElement OK_BUTTON = $x("//button[@type='submit']");
-    public static final SelenideElement CHECKBOX_TERMS_OF_USE = $x("//input[@id='registration_terms_of_use']");
-    public static final SelenideElement CHECKBOX_LOST_PASSWORD_WARNING_REGISTERED = $x("//input[@id='registration_lost_password_warning_registered']");
-    public static final SelenideElement USER_REGISTERED_XPATH = $x("//*[contains(text(), 'User registered')]");
-    public static final SelenideElement VALIDATION_MESSAGE_SHORT_PASSWORD = $x("//*[@id='registration_password-strength-indicator' and contains(text(), 'Password is too short')]");
-    public static final SelenideElement VALIDATION_MESSAGE_BAD_PASSWORD = $x("//*[contains(text(), 'Password strength: Bad')]");
-    public static final SelenideElement VALIDATION_MESSAGE_STRONG_PASSWORD = $x("//*[contains(text(), 'Password strength: Strong')]");
-    public static final SelenideElement VALIDATION_MESSAGE_PASSWORD_BACKGROUND = $x("//*[@id = 'registration_password-strength-indicator']");
-    public static final SelenideElement VALIDATION_MESSAGE_PASSWORD_CONFIRMATION = $x("//*[contains(text(), 'Password confirmation doesn’t match')]");
+    public static final SelenideElement USER_REGISTERED_MESSAGE = $x("//*[contains(text(), 'User registered')]");
+    public static final SelenideElement PASSWORD_VALIDATION_MESSAGE = $x("//*[@id='registration_password-strength-indicator']");
+    public static final SelenideElement PASSWORD_CONFIRMATION_MESSAGE = $x("//*[contains(text(), 'Password confirmation')]");
+    public static final String GREEN_COLOR = "rgba(195, 255, 136, 1)";
+    public static final String RED_COLOR = "rgba(255, 160, 160, 1)";
 
     /**
      * Instantiates a new Registration page.
      */
-    public RegistrationPage(){
+    public RegistrationPage() {
     }
 
     /**
@@ -49,24 +46,30 @@ public class RegistrationPage extends BasePage{
      * @return the registration page
      */
     public RegistrationPage registrationNewAccount(String email, String password, String passwordConfirmation, String passwordHint) {
-        new Input("registration_email").writeRegistrationFields(email);
-        new Input("registration_password").writeRegistrationFields(password);
-        new Input("registration_password_confirmation").writeRegistrationFields(passwordConfirmation);
-        new Input("registration_password_hint").writeRegistrationFields(passwordHint);
-        new Checkbox().selectCheckbox(CHECKBOX_TERMS_OF_USE);
-        new Checkbox().selectCheckbox(CHECKBOX_LOST_PASSWORD_WARNING_REGISTERED);
+        new Input("registration_email").writeFieldsById(email);
+        new Input("registration_password").writeFieldsById(password);
+        new Input("registration_password_confirmation").writeFieldsById(passwordConfirmation);
+        new Input("registration_password_hint").writeFieldsById(passwordHint);
+        new Checkbox("registration_terms_of_use").setCheckboxValueRegistration(true);
+        new Checkbox("registration_lost_password_warning_registered").setCheckboxValueRegistration(true);
         new Button().click(OK_BUTTON);
         log.info("User is registered");
         return this;
     }
 
     /**
-     * Success user registered text string.
+     * Gets success registration message text.
      *
-     * @return the string
+     * @return the success message text
      */
-    public static String successUserRegisteredText() {
-        return USER_REGISTERED_XPATH.getText();
+    public String getSuccessRegistrationMessage() {
+        try {
+            log.info("Getting success user registered text.");
+            return USER_REGISTERED_MESSAGE.getText();
+        } catch (Exception e) {
+            log.error("Failed to get success registration message", e);
+            return "";
+        }
     }
 
     /**
@@ -75,8 +78,8 @@ public class RegistrationPage extends BasePage{
      * @param password the password
      * @return the registration page
      */
-    public RegistrationPage registrationInputPasswordField(String password) {
-        new Input("registration_password").writeRegistrationFields(password);
+    public RegistrationPage enterPassword(String password) {
+        new Input("registration_password").writeFieldsById(password);
         log.info("Password field is filling");
         return this;
     }
@@ -88,47 +91,41 @@ public class RegistrationPage extends BasePage{
      * @param passwordConfirmation the password confirmation
      * @return the registration page
      */
-    public RegistrationPage registrationInputPasswordAndPasswordConfirmationFields(String password, String passwordConfirmation) {
-        new Input("registration_password").writeRegistrationFields(password);
-        new Input("registration_password_confirmation").writeRegistrationFields(passwordConfirmation);
+    public RegistrationPage enterPasswordAndPasswordConfirmation(String password, String passwordConfirmation) {
+        new Input("registration_password").writeFieldsById(password);
+        new Input("registration_password_confirmation").writeFieldsById(passwordConfirmation);
         log.info("Password and password confirmation fields are filling");
         new Button().click(OK_BUTTON);
         return this;
     }
 
     /**
-     * Registration short password validation message string.
+     * Gets password validation message.
      *
-     * @return the string
+     * @return the password validation message text
      */
-    public static String registrationShortPasswordValidationMessage() {
-        return VALIDATION_MESSAGE_SHORT_PASSWORD.getText();
+    public String getPasswordValidationMessage() {
+        try {
+            log.info("Getting password validation message");
+            return PASSWORD_VALIDATION_MESSAGE.getText();
+        } catch (Exception e) {
+            log.error("Failed to get password validation message", e);
+            return "";
+        }
     }
 
     /**
-     * Registration bad password validation message string.
+     * Gets password confirmation validation message.
      *
-     * @return the string
+     * @return the password confirmation validation message text
      */
-    public static String registrationBadPasswordValidationMessage() {
-        return VALIDATION_MESSAGE_BAD_PASSWORD.getText();
-    }
-
-    /**
-     * Registration strong password validation message string.
-     *
-     * @return the string
-     */
-    public static String registrationStrongPasswordValidationMessage() {
-        return VALIDATION_MESSAGE_STRONG_PASSWORD.getText();
-    }
-
-    /**
-     * Registration password confirmation validation message string.
-     *
-     * @return the string
-     */
-    public static String registrationPasswordConfirmationValidationMessage() {
-        return VALIDATION_MESSAGE_PASSWORD_CONFIRMATION.getText();
+    public String getPasswordConfirmationValidationMessage() {
+        try {
+            log.info("Getting password confirmation validation message");
+            return PASSWORD_CONFIRMATION_MESSAGE.getText();
+        } catch (Exception e) {
+            log.error("Failed to get password confirmation validation message", e);
+            return "";
+        }
     }
 }

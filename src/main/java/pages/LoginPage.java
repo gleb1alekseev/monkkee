@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Input;
@@ -12,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Log4j2
 public class LoginPage extends BasePage{
 
-    public static final SelenideElement LOGIN = $x("//*[@type='submit']");
+    public static final SelenideElement LOGIN_BUTTON = $x("//*[@type='submit']");
     public static final SelenideElement MANDATORY_FIELD_MESSAGE = $x("//*[contains(text(), 'Mandatory field')]");
     public static final SelenideElement LOGIN_FAILED_MESSAGE = $x("//*[contains(text(), 'Login failed')]");
     public static final SelenideElement LOGO_BUTTON = $x("//*[@alt='Logo']");
@@ -35,79 +34,52 @@ public class LoginPage extends BasePage{
     }
 
     /**
-     * Is opened login page.
-     *
-     * @return the login page
-     */
-    public LoginPage isOpened() {
-        log.info("Page is opened");
-        LOGIN.shouldBe(Condition.visible);
-        return this;
-    }
-
-    private LoginPage fillLoginAndPasswordToLogin(String login, String password) {
-        new Input("login").writeLoginFields(login);
-        new Input("password").writeLoginFields(password);
-        new Button().click(LOGIN);
-        log.info("login with filling login and password");
-        return this;
-    }
-
-    /**
-     * Login to main page main page.
+     * Login login page.
      *
      * @param login    the login
      * @param password the password
-     * @return the main page
+     * @return the login page
      */
-    public MainPage loginToMainPage(String login, String password) {
-        fillLoginAndPasswordToLogin(login, password);
-        log.info("login to main page");
-        return new MainPage();
-    }
-
-    private LoginPage fillOnlyUserToLogin(String login) {
-        new Input("login").writeLoginFields(login);
-        new Button().click(LOGIN);
-        log.info("Login without password");
+    public LoginPage login(String login, String password) {
+        new Input("login").writeFieldsByName(login);
+        new Input("password").writeFieldsByName(password);
+        new Button().click(LOGIN_BUTTON);
+        log.info("login");
         return this;
     }
 
     /**
-     * Login with only login main page.
+     * Login without filling login field main page.
      *
      * @param login the login
      * @return the main page
      */
-    public MainPage loginWithOnlyLogin(String login) {
-        fillOnlyUserToLogin(login);
+    public MainPage loginWithoutFillingLoginField(String login) {
+        new Input("login").writeFieldsByName(login);
+        new Button().click(LOGIN_BUTTON);
+        log.info("Login without password");
         return new MainPage();
     }
 
-    private LoginPage fillOnlyPasswordToLogin(String password) {
-        new Input("password").writeLoginFields(password);
-        new Button().click(LOGIN);
-        log.info("Login without login field");
-        return this;
-    }
-
     /**
-     * Login with only password main page.
+     * Login without filling password field main page.
      *
      * @param password the password
      * @return the main page
      */
-    public MainPage loginWithOnlyPassword(String password) {
-        fillOnlyPasswordToLogin(password);
+    public MainPage loginWithoutFillingPasswordField(String password) {
+        new Input("password").writeFieldsByName(password);
+        new Button().click(LOGIN_BUTTON);
+        log.info("Login without login field");
         return new MainPage();
     }
 
     /**
-     * Login failed text string.
+     * Gets login failed text.
      *
-     * @return the string
+     * @return the login failed text
      */
-    public static String loginFailedText() {
+    public static String getLoginFailedText() {
         return LOGIN_FAILED_MESSAGE.getText();
     }
 

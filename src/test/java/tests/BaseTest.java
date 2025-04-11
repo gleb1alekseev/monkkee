@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import constants.ITestConstants;
 import listeners.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,10 +19,11 @@ import utils.PropertyReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 @Listeners(TestListener.class)
-public class BaseTest extends BasePage {
+public class BaseTest extends BasePage implements ITestConstants {
 
     protected LoginSteps loginSteps;
     protected RegistrationSteps registrationSteps;
@@ -73,5 +75,6 @@ public class BaseTest extends BasePage {
 
     @AfterMethod
     public void endTest() {
+        getWebDriver().quit();
     }
 }
