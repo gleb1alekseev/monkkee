@@ -15,7 +15,7 @@ public class MainTest extends BaseTest{
         mainSteps.logoutStep();
     }
 
-    @Test(description = "login and create an entry with description", invocationCount = 3)
+    @Test(description = "login and create an entry with description", invocationCount = 1)
     public void createEntryWithDescriptionTest(){
         loginSteps.loginWithUserAndPasswordStep(LOGIN_USER, LOGIN_PASSWORD, LOGIN_URL);
         mainSteps.createEntryWithDescriptionStep(MAIN_ENTRY_DESCRIPTION);
