@@ -1,6 +1,5 @@
 package steps;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import pages.MainPage;
@@ -17,26 +16,26 @@ public class MainSteps extends BaseSteps{
     }
 
     @Step("Logout from Main page")
-    public void logoutStep(){
+    public void logoutCheckStep(){
         mainPage.logout();
         Assert.assertTrue(LOGIN_BUTTON.isDisplayed());
     }
 
     @Step("Login and create an entry with description")
-    public void createEntryWithDescriptionStep(String description){
+    public void createEntryWithDescriptionCheckStep(String description){
         mainPage.createEntryWithDescription(description);
         Assert.assertEquals(ENTRY_CREATED_WITH_DESCRIPTION.getText(), description);
     }
 
     @Step("Login, create and delete an entry with description")
-    public void createAndDeleteEntryWithDescriptionStep(String description){
+    public void createAndDeleteEntryCheckStep(String description){
         mainPage.createAndDeleteEntryWithDescription(description);
         switchTo().alert().accept();
         Assert.assertFalse(ENTRY_CREATED_WITH_DESCRIPTION.exists());
     }
 
     @Step("Login, create and search an entry with description")
-    public void createAndSearchEntryWithDescriptionStep(String description){
+    public void createAndSearchEntryCheckStep(String description){
         mainPage.createAndSearchEntryWithDescription(description);
         Assert.assertEquals(ENTRY_CREATED_WITH_DESCRIPTION.getText(), description);
     }

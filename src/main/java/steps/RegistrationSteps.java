@@ -16,7 +16,7 @@ public class RegistrationSteps extends BaseSteps{
     }
 
     @Step("Registration user with filling all fields with valid data and select both checkboxes")
-    public void registrationNewAccountStep(String url, String email, String password, String passwordConfirmation, String passwordHint){
+    public void registerAndCheckSuccessRegistrationMessage(String url, String email, String password, String passwordConfirmation, String passwordHint){
         registrationPage
                 .openRegistrationPage(url)
                 .registrationNewAccount(email, password, passwordConfirmation, passwordHint);
@@ -24,7 +24,7 @@ public class RegistrationSteps extends BaseSteps{
     }
 
     @Step("Registration user with short password field check validation message")
-    public void registrationWithShortPasswordStep(String url, String password){
+    public void registrationWithShortPasswordAndCheckValidationMessageStep(String url, String password){
         registrationPage
                 .openRegistrationPage(url)
                 .enterPassword(password);
@@ -32,7 +32,7 @@ public class RegistrationSteps extends BaseSteps{
     }
 
     @Step("Registration user bad short password field check validation message and background colour")
-    public void registrationWithBadPasswordStep(String url, String password){
+    public void registrationWithBadPasswordAndCheckValidationMessageStep(String url, String password){
         registrationPage
                 .openRegistrationPage(url)
                 .enterPassword(password);
@@ -41,7 +41,7 @@ public class RegistrationSteps extends BaseSteps{
     }
 
     @Step("Registration user strong short password field check validation message and background colour")
-    public void registrationWithStrongPasswordStep(String url, String password){
+    public void registrationWithStrongPasswordAndCheckValidationMessageStep(String url, String password){
         registrationPage
                 .openRegistrationPage(url)
                 .enterPassword(password);
@@ -50,7 +50,7 @@ public class RegistrationSteps extends BaseSteps{
     }
 
     @Step("Registration user filling password and password_confirmation fields to check validation message")
-    public void registrationCheckValidationPasswordStep(String url, String password, String passwordConfirmation){
+    public void registrationWithDifferentPasswordConfirmationValidationCheckStep(String url, String password, String passwordConfirmation){
         registrationPage
                 .openRegistrationPage(url)
                 .enterPasswordAndPasswordConfirmation(password, passwordConfirmation);

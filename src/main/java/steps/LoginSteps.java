@@ -6,6 +6,7 @@ import org.testng.Assert;
 import pages.LoginPage;
 
 import static pages.LoginPage.MANDATORY_FIELD_MESSAGE;
+import static pages.LoginPage.getLoginFailedText;
 import static pages.MainPage.CREATE_NEW_ENTRY;
 
 public class LoginSteps extends BaseSteps{
@@ -40,9 +41,10 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step("Open login page by click logo and fill login and password")
-    public void clickLogoAndFillLoginAndPasswordStep(String login, String password){
+    public void clickLogoOnLoginToCheckValidationMessageStep(String login, String password){
         loginPage
                 .clickLogo()
                 .login(login, password);
+        Assert.assertEquals(getLoginFailedText(), "Login failed");
     }
 }

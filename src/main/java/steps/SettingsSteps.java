@@ -17,13 +17,13 @@ public class SettingsSteps extends BaseSteps implements ITestConstants {
     }
 
     @Step("Change colour scheme on settings page")
-    public void changeColourSchemeStep(String option){
+    public void checkChangingColourSchemeStep(String option){
         settingsPage.changeColourScheme("Dark");
         Assert.assertEquals(successChangeColourSchemeText(), ITestConstants.CHANGE_COLOUR_SCHEME_TEXT);
     }
 
     @Step("Change language on settings page")
-    public void changeLanguageStep(String option){
+    public void checkChangingLanguageStep(String option){
         settingsPage.changeLanguage("English");
         Assert.assertEquals(getSuccessChangeLanguageText(), ITestConstants.CHANGE_LANGUAGE_TEXT);
     }
