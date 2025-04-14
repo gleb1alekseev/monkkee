@@ -32,7 +32,7 @@ public class RegistrationSteps extends BaseSteps {
         Assert.assertEquals(registrationPage.getPasswordValidationMessage(), PASSWORD_TOO_SHORT);
     }
 
-    @Step("Registration user bad short password field check validation message and background colour")
+    @Step("Registration user with bad password to check validation message and background colour")
     public void registrationWithBadPasswordAndCheckValidationMessageStep(String url, String password){
         registrationPage
                 .openRegistrationPage(url)
@@ -42,7 +42,7 @@ public class RegistrationSteps extends BaseSteps {
         softAssert.assertTrue(PASSWORD_VALIDATION_MESSAGE.shouldHave(cssValue("background-color", RED_COLOR)).exists());
     }
 
-    @Step("Registration user strong short password field check validation message and background colour")
+    @Step("Registration user with strong password to check validation message and background colour")
     public void registrationWithStrongPasswordAndCheckValidationMessageStep(String url, String password){
         registrationPage
                 .openRegistrationPage(url)

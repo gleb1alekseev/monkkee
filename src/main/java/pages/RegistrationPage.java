@@ -26,7 +26,7 @@ public class RegistrationPage extends BasePage {
     }
 
     /**
-     * Open registration page registration page.
+     * Open registration page.
      *
      * @param url the url
      * @return the registration page
@@ -37,7 +37,7 @@ public class RegistrationPage extends BasePage {
     }
 
     /**
-     * Registration new account registration page.
+     * Registration new account.
      *
      * @param email                the email
      * @param password             the password

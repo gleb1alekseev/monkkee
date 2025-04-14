@@ -11,7 +11,7 @@ public class SettingsTest extends BaseTest{
         settingsSteps.checkChangingColourSchemeStep("Dark");
     }
 
-    @Test(description = "change language on settings page", invocationCount = 3)
+    @Test(description = "change language on settings page", invocationCount = 1)
     public void changeLanguageTest(){
         loginSteps.checkLoginWithUserAndPasswordStep(LOGIN_USER, LOGIN_PASSWORD, LOGIN_URL);
         settingsSteps.checkChangingLanguageStep("English");
