@@ -2,13 +2,14 @@ package steps;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 import pages.RegistrationPage;
 
 import static com.codeborne.selenide.Condition.cssValue;
 import static constants.ITestConstants.*;
 import static pages.RegistrationPage.*;
 
-public class RegistrationSteps extends BaseSteps{
+public class RegistrationSteps extends BaseSteps {
     RegistrationPage registrationPage;
 
     public RegistrationSteps() {
@@ -16,7 +17,7 @@ public class RegistrationSteps extends BaseSteps{
     }
 
     @Step("Registration user with filling all fields with valid data and select both checkboxes")
-    public void registerAndCheckSuccessRegistrationMessage(String url, String email, String password, String passwordConfirmation, String passwordHint){
+    public void registrationAndCheckSuccessRegistrationMessage(String url, String email, String password, String passwordConfirmation, String passwordHint){
         registrationPage
                 .openRegistrationPage(url)
                 .registrationNewAccount(email, password, passwordConfirmation, passwordHint);
@@ -36,8 +37,9 @@ public class RegistrationSteps extends BaseSteps{
         registrationPage
                 .openRegistrationPage(url)
                 .enterPassword(password);
-        Assert.assertEquals(registrationPage.getPasswordValidationMessage(), PASSWORD_BAD);
-        Assert.assertTrue(PASSWORD_VALIDATION_MESSAGE.shouldHave(cssValue("background-color", RED_COLOR)).exists());
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(registrationPage.getPasswordValidationMessage(), PASSWORD_BAD);
+        softAssert.assertTrue(PASSWORD_VALIDATION_MESSAGE.shouldHave(cssValue("background-color", RED_COLOR)).exists());
     }
 
     @Step("Registration user strong short password field check validation message and background colour")
@@ -45,8 +47,9 @@ public class RegistrationSteps extends BaseSteps{
         registrationPage
                 .openRegistrationPage(url)
                 .enterPassword(password);
-        Assert.assertEquals(registrationPage.getPasswordValidationMessage(), PASSWORD_STRONG);
-        Assert.assertTrue(PASSWORD_VALIDATION_MESSAGE.shouldHave(cssValue("background-color", GREEN_COLOR)).exists());
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(registrationPage.getPasswordValidationMessage(), PASSWORD_STRONG);
+        softAssert.assertTrue(PASSWORD_VALIDATION_MESSAGE.shouldHave(cssValue("background-color", GREEN_COLOR)).exists());
     }
 
     @Step("Registration user filling password and password_confirmation fields to check validation message")

@@ -75,6 +75,6 @@ public class BaseTest extends BasePage implements ITestConstants {
 
     @AfterMethod
     public void endTest() {
-//        getWebDriver().quit();
+        getWebDriver().quit();
     }
 }

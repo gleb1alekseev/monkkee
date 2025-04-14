@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 import static pages.LoginPage.LOGIN_BUTTON;
 import static pages.MainPage.ENTRY_CREATED_WITH_DESCRIPTION;
 
-public class MainSteps extends BaseSteps{
+public class MainSteps extends BaseSteps {
     MainPage mainPage;
 
     public MainSteps() {

@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     public static final SelenideElement LOGIN_BUTTON = $x("//*[@type='submit']");
     public static final SelenideElement MANDATORY_FIELD_MESSAGE = $x("//*[contains(text(), 'Mandatory field')]");
@@ -80,7 +80,14 @@ public class LoginPage extends BasePage{
      * @return the login failed text
      */
     public static String getLoginFailedText() {
-        return LOGIN_FAILED_MESSAGE.getText();
+        try {
+            log.info("Getting login failed error message.");
+            return LOGIN_FAILED_MESSAGE.getText();
+        } catch (Exception e) {
+            log.error("Failed to get login failed error message.", e);
+            return "";
+        }
+
     }
 
     /**

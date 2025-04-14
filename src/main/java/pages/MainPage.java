@@ -10,14 +10,13 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
-public class MainPage extends BasePage{
+public class MainPage extends BasePage {
 
     public static final SelenideElement CREATE_NEW_ENTRY = $x("//*[@title='Create an entry']");
     public static final SelenideElement LOGOUT = $x("//*[contains(text(), 'Logout')]");
     public static final SelenideElement ENTRY_BACK_TO_OVERVIEW = $x("//*[@title='Back to overview']");
     public static final SelenideElement ENTRY_CREATED_WITH_DESCRIPTION = $x("//*[text()='MainEntryDescriptionTest']");
     public static final SelenideElement ENTRY_DESCRIPTION_EDIT = $x("//div[contains(@class, 'entries__entry-container')]");
-    public static final SelenideElement CHECKBOX_CREATED_ENTITY = $x("//*[contains(text(), '%s')]/preceding::input[@type='checkbox'][2]");
     public static final SelenideElement DELETE_CREATED_ENTRY = $x("//*[@title='Delete selected entries']");
     public static final SelenideElement SEARCH_CREATED_ENTRY = $x("//*[@title='Search']");
 

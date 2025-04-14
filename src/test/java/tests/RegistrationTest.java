@@ -7,14 +7,14 @@ public class RegistrationTest extends BaseTest{
 
     @Test(description = "success registration user with filling all field and check message that user registered")
     public void successRegistrationTest(){
-        registrationSteps.registerAndCheckSuccessRegistrationMessage(
+        registrationSteps.registrationAndCheckSuccessRegistrationMessage(
                 REGISTRATION_URL, REGISTRATION_EMAIL, REGISTRATION_PASSWORD,
                 REGISTRATION_PASSWORD_CONFIRMATION, REGISTRATION_PASSWORD_HINT);
     }
 
     @Test(description = "success registration user and cannot try to login without confirm email")
     public void successRegistrationAndLoginWithoutConfirmationEmailToCheckValidationMessageTest(){
-        registrationSteps.registerAndCheckSuccessRegistrationMessage(
+        registrationSteps.registrationAndCheckSuccessRegistrationMessage(
                 REGISTRATION_URL, REGISTRATION_EMAIL, REGISTRATION_PASSWORD,
                 REGISTRATION_PASSWORD_CONFIRMATION, REGISTRATION_PASSWORD_HINT);
         loginSteps.clickLogoOnLoginToCheckValidationMessageStep(REGISTRATION_EMAIL, REGISTRATION_PASSWORD);
