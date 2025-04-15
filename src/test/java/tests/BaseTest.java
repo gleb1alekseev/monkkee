@@ -30,24 +30,10 @@ public class BaseTest extends BasePage implements ITestConstants {
     protected MainSteps mainSteps;
     protected SettingsSteps settingsSteps;
 
-//    login
     public static String LOGIN_USER = PropertyReader.getProperty("login");
     public static String LOGIN_PASSWORD = PropertyReader.getProperty("password");
     public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
-
-//    registration
     public static String REGISTRATION_URL = PropertyReader.getProperty("registrationUrl");
-    public static String REGISTRATION_EMAIL = PropertyReader.getProperty("registrationEmail");
-    public static String REGISTRATION_PASSWORD = PropertyReader.getProperty("registrationPassword");
-    public static String REGISTRATION_PASSWORD_CONFIRMATION = PropertyReader.getProperty("registrationPasswordConfirmation");
-    public static String REGISTRATION_PASSWORD_HINT = PropertyReader.getProperty("registrationPasswordHint");
-    public static String REGISTRATION_SHORT_PASSWORD = PropertyReader.getProperty("registrationShortPassword");
-    public static String REGISTRATION_BAD_RED_PASSWORD = PropertyReader.getProperty("registrationBadRedPassword");
-    public static String REGISTRATION_STRONG_GREEN_PASSWORD = PropertyReader.getProperty("registrationStrongGreenPassword");
-    public static String REGISTRATION_PASSWORD_CONFIRMATION_NOT_EQUALS_PASSWORD = PropertyReader.getProperty("registrationPasswordConfirmationNotEqualPassword");
-
-    public static String MAIN_ENTRY_DESCRIPTION = PropertyReader.getProperty("entryDescription");
-    public static String MAIN_ENTRY_URL = PropertyReader.getProperty("entryUrl");
 
     public void initPages() {
         loginSteps = new LoginSteps();
@@ -59,6 +45,7 @@ public class BaseTest extends BasePage implements ITestConstants {
     @BeforeMethod
     public void initTest(){
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
         Map<String, Object> prefs = new HashMap<>();
         options.addArguments("--disable-popup-blocking");
         prefs.put("profile.default_content_setting_values.notifications", 2);
@@ -75,6 +62,6 @@ public class BaseTest extends BasePage implements ITestConstants {
 
     @AfterMethod
     public void endTest() {
-//        getWebDriver().quit();
+        getWebDriver().quit();
     }
 }

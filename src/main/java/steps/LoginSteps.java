@@ -9,7 +9,7 @@ import static pages.LoginPage.MANDATORY_FIELD_MESSAGE;
 import static pages.LoginPage.getLoginFailedText;
 import static pages.MainPage.CREATE_NEW_ENTRY;
 
-public class LoginSteps extends BaseSteps{
+public class LoginSteps extends BaseSteps {
     LoginPage loginPage;
 
     public LoginSteps(){
@@ -17,7 +17,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step("Login with user and password")
-    public void loginWithUserAndPasswordStep(String login, String password, String url){
+    public void checkLoginWithUserAndPasswordStep(String login, String password, String url){
         loginPage
                 .openLoginPage(url)
                 .login(login, password);
@@ -25,7 +25,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step("Login with user without password")
-    public void loginWithoutPasswordStep(String login, String url){
+    public void checkLoginWithoutPasswordStep(String login, String url){
         loginPage
                 .openLoginPage(url)
                 .loginWithoutFillingLoginField(login);
@@ -33,7 +33,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step("Login with password without user")
-    public void loginWithoutFillingUserStep(String password, String url){
+    public void checkLoginWithoutFillingUserStep(String password, String url){
         loginPage
                 .openLoginPage(url)
                 .loginWithoutFillingPasswordField(password);

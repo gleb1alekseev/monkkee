@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
-public class SettingsPage extends BasePage{
+public class SettingsPage extends BasePage {
 
     public static final SelenideElement SETTINGS = $x("//*[contains(text(), 'Settings')]");
     public static final SelenideElement COLOUR_SCHEME_BLOCK = $x("//*[contains(@ng-class, 'color_scheme')]");
@@ -54,7 +54,7 @@ public class SettingsPage extends BasePage{
      *
      * @return the string
      */
-    public static String successChangeColourSchemeText() {
+    public static String getSuccessChangeColourSchemeText() {
         try {
             log.info("Getting success change colour scheme validation message");
             return COLOUR_SCHEME_CHANGE_MESSAGE.getText();
