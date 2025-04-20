@@ -16,15 +16,15 @@ public class MainTest extends BaseTest{
         mainSteps.createAndDeleteEntryCheckStep(MAIN_ENTRY_DESCRIPTION);
     }
 
-    @Test(description = "login and create an entry with description", invocationCount = 1)
-    public void createEntryWithDescriptionTest(){
-        loginSteps.checkLoginWithUserAndPasswordStep(LOGIN_USER, LOGIN_PASSWORD, LOGIN_URL);
-        mainSteps.createEntryWithDescriptionCheckStep(MAIN_ENTRY_DESCRIPTION);
-    }
-
     @Test(description = "login, create and search an entry with description")
     public void createAndSearchEntryWithDescriptionTest(){
         loginSteps.checkLoginWithUserAndPasswordStep(LOGIN_USER, LOGIN_PASSWORD, LOGIN_URL);
         mainSteps.createAndSearchEntryCheckStep(MAIN_ENTRY_DESCRIPTION);
+    }
+
+    @Test(description = "login and create an entry with description", invocationCount = 1)
+    public void createEntryWithDescriptionTest(){
+        loginSteps.checkLoginWithUserAndPasswordStep(LOGIN_USER, LOGIN_PASSWORD, LOGIN_URL);
+        mainSteps.createEntryWithDescriptionCheckStep(MAIN_ENTRY_DESCRIPTION);
     }
 }
