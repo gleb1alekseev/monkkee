@@ -7,6 +7,8 @@ pipeline {
    }
     parameters {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+                string(name: 'USER', defaultValue: 'defaultUser', description: 'Имя пользователя')
+                string(name: 'PASSWORD', defaultValue: 'defaultPassword', description: 'Пароль')
     }
 
    stages {
