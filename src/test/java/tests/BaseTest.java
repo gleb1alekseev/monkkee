@@ -48,7 +48,7 @@ public class BaseTest extends BasePage implements ITestConstants {
     @BeforeMethod
     public void initTest(){
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         Map<String, Object> prefs = new HashMap<>();
         options.addArguments("--disable-popup-blocking");
         prefs.put("profile.default_content_setting_values.notifications", 2);
