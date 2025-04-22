@@ -10,7 +10,7 @@ public class MainTest extends BaseTest {
         mainSteps.logoutCheckStep();
     }
 
-    @Test(description = "login and create an entry with description", invocationCount = 1)
+    @Test(description = "login and create an entry with description")
     public void createEntryWithDescriptionTest() {
         loginSteps.checkLoginWithUserAndPasswordStep(USER, PASSWORD, LOGIN_URL);
         mainSteps.createEntryWithDescriptionCheckStep(MAIN_ENTRY_DESCRIPTION);
@@ -22,7 +22,7 @@ public class MainTest extends BaseTest {
         mainSteps.createAndSearchEntryCheckStep(MAIN_ENTRY_DESCRIPTION);
     }
 
-    @Test(description = "login, create and delete an entry with description", invocationCount = 1)
+    @Test(description = "login, create and delete an entry with description")
     public void createAndDeleteEntryWithDescriptionTest() {
         loginSteps.checkLoginWithUserAndPasswordStep(USER, PASSWORD, LOGIN_URL);
         mainSteps.createAndDeleteEntryCheckStep(MAIN_ENTRY_DESCRIPTION);
