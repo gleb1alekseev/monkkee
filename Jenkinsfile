@@ -21,7 +21,7 @@ pipeline {
 //             sh "mvn clean test"
 
             // To run Maven on a Windows agent, use
-            bat "mvn clean -Duser=${params.USER} -Dpassword=${params.PASSWORD} test"
+            bat "mvn clean -Duser=${params.user} -Dpassword=${params.password} test"
          }
 
          post {
