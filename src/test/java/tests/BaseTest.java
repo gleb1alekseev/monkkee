@@ -30,8 +30,8 @@ public class BaseTest extends BasePage implements ITestConstants {
     protected MainSteps mainSteps;
     protected SettingsSteps settingsSteps;
 
-    public static String USER = System.getProperty("user", "gleban220193@gmail.com");
-    public static String PASSWORD = System.getProperty("password", "11111111");
+    public static String USER = System.getProperty("user", ""); //передать данные для логина
+    public static String PASSWORD = System.getProperty("password", ""); //передать данные для пароля
 
     public static String LOGIN_USER = PropertyReader.getProperty("login");
     public static String LOGIN_PASSWORD = PropertyReader.getProperty("password");
